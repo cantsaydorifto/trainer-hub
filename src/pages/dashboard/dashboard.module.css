@@ -1,0 +1,100 @@
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 80px;
+}
+
+.dashboardInfo {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+.avatar>img {
+    height: 200px;
+    border-radius: 16px;
+    display: block;
+    margin: auto;
+}
+
+.trainerInfo {
+    width: 50%;
+    margin-left: 20px;
+}
+
+.trainerInfo>h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.trainerInfo>p {
+    font-size: 1.2rem;
+}
+
+.container>h1 {
+    margin: 20px 0 0 0;
+    text-align: center;
+}
+
+.links {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.linkBox {
+    height: 120px;
+    width: 400px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    color: white;
+    border: 2px solid white;
+    border-radius: 16px;
+    transition: all 0.5s;
+}
+
+.linkBox:hover {
+    background-color: rgb(144, 144, 255);
+    color: black;
+}
+
+.linkBox:hover img {
+    scale: 1.05;
+}
+
+.linkBox>img {
+    transition: all 0.5s;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.linkInfo {
+    width: 70%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.linkInfo>p {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.linkInfo h2 {
+    font-size: 1.2rem;
+    text-align: left;
+}
