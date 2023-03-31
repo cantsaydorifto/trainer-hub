@@ -14,7 +14,7 @@ const usePokemonData = (page: number) => {
     ["pokemon", res],
     () => getPokemonData(res),
     {
-      enabled: !!res,
+      enabled: !!res[0],
       refetchOnWindowFocus: false,
       cacheTime: 0,
     }
