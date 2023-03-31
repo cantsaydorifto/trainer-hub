@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,25 +13,16 @@ import { getServerAuthSession } from "~/server/auth";
 import { firstWorldCapital } from "~/helpers/firstWordCapital";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const pokedexPageVariant = {
   initial: {
     x: 500,
-    y: -500,
-    rotateZ: 5,
     opacity: 0,
   },
   animate: {
     x: 0,
-    y: 0,
-    rotateZ: 0,
     opacity: 1,
-  },
-  exit: {
-    opacity: 0,
-    rotateZ: -5,
-    x: -300,
-    y: 300,
   },
 };
 
@@ -70,7 +60,6 @@ function Pokedex({ caughtPokemonIds }: { caughtPokemonIds: number[] }) {
       variants={pokedexPageVariant}
       initial="initial"
       animate="animate"
-      exit="exit"
     >
       <h1 className={styles.pokedexHeading}>Pokedex</h1>
       <div className={styles.prevNextButtons}>
@@ -95,11 +84,13 @@ function Pokedex({ caughtPokemonIds }: { caughtPokemonIds: number[] }) {
               }CardColor`}
             >
               <div className={styles.pokeId}>#{el.id}</div>
-              <img
+              <Image
                 src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${getPokemonId(
                   el.id
                 )}.png`}
                 alt={el.name}
+                width={230}
+                height={230}
               />
               <h2>{firstWorldCapital(el.name)}</h2>
               <div className="typeRow">
