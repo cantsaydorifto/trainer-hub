@@ -6,7 +6,7 @@ const usePokemonData = (page: number) => {
     refetchOnWindowFocus: false,
     cacheTime: 0,
   });
-  const res = data?.data.results;
+  const res = data?.data.results || [];
   const prevPageUrl = data?.data.previous;
   const nextPageUrl = data?.data.next;
 

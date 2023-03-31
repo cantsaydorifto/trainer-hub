@@ -3,7 +3,7 @@ import axios from "axios";
 type Response = {
   name: string;
   url: string;
-}[];
+};
 
 type PokemonData = {
   id: number;
@@ -44,7 +44,7 @@ export const getPokemonNames = (page: number) => {
   );
 };
 
-export const getPokemonData = (res: Response) => {
+export const getPokemonData = (res: Response[]) => {
   return Promise.all(res.map((el) => axios.get<PokemonData>(el.url)));
 };
 
