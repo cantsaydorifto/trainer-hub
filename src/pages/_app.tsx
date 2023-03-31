@@ -20,8 +20,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     if (rootElement) {
       if (
         router.pathname === "/pokedex" ||
-        router.pathname === "/pokedex/start" ||
-        router.pathname === "/pokedex/search"
+        router.pathname === "/pokedex/start"
       ) {
         rootElement.className = "root-2";
       } else {
