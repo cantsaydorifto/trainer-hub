@@ -1,0 +1,17 @@
+.start {
+    font-size: 2rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.homepage {
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
