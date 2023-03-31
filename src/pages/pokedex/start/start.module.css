@@ -1,0 +1,103 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.container img {
+    height: 70%;
+}
+
+.card {
+    height: 270px;
+    width: 270px;
+    border: 2px solid white;
+    border-radius: 16px;
+    transition: all 0.2s;
+}
+
+.searchByName {
+    background-color: #e37b7b;
+}
+
+.searchByName:hover {
+    transform: scale(1.05);
+    background-color: #ed3939;
+}
+
+.all {
+    background-color: #8cc68c;
+}
+
+.all:hover {
+    transform: scale(1.05);
+    background-color: #38ca38;
+}
+
+.linkCard {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.linkAll {
+    color: #062F06;
+}
+
+.linkName {
+    color: #110404;
+}
+
+@media only screen and (min-width:500px) and (orientation : landscape) {
+    .card {
+        width: 250px;
+        height: 250px;
+    }
+
+    .container {
+        flex-direction: row;
+    }
+}
+
+@media only screen and (min-width:768px) and (orientation : portrait) {
+    .card {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media only screen and (min-width:850px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .container p {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media only screen and (min-width:950px) {
+    .card {
+        width: 400px;
+        height: 400px;
+    }
+}
