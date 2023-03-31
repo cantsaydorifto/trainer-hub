@@ -9,7 +9,7 @@ import { getPokemonId } from "~/helpers/pokemon";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import { firstWorldCapital } from "~/helpers/firstWordCapital";
 import Image from "next/image";
-import useCaughtPokemon from "./useCaughtPokemon";
+import useCaughtPokemon from "~/hooks/useCaughtPokemon";
 
 export const pokedexPageVariant = {
   initial: {
