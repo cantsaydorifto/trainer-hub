@@ -1,0 +1,153 @@
+.wrapper {
+    width: var(--pokeball-height);
+    height: var(--pokeball-height);
+    border-radius: 50%;
+    background-color: rgb(74, 73, 73);
+    position: relative;
+    z-index: -1;
+    animation: rotate 1s linear infinite;
+}
+
+.pokeballContainer {
+    animation: spin 1s ease-in-out infinite;
+}
+
+.handContainer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 50vh auto;
+}
+
+.handContainer img {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: -30px;
+    transform-origin: 0% 50%;
+    animation: hand 1s ease-in-out infinite;
+}
+
+.wrapper::before {
+    content: "";
+    width: calc(var(--pokeball-height) - 10px);
+    height: calc((var(--pokeball-height) - 10px) / 2);
+    border-top-left-radius: calc((var(--pokeball-height) - 10px) / 2);
+    border-top-right-radius: calc((var(--pokeball-height) - 10px) / 2);
+    background-color: red;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.wrapper::after {
+    content: "";
+    width: calc(var(--pokeball-height) - 10px);
+    height: calc((var(--pokeball-height) - 10px) / 2);
+    border-bottom-left-radius: calc((var(--pokeball-height) - 10px) / 2);
+    border-bottom-right-radius: calc((var(--pokeball-height) - 10px) / 2);
+    background-color: white;
+    position: absolute;
+    top: calc(var(--pokeball-height) / 2);
+    left: 5px;
+}
+
+.pokeballWrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.pokeball {
+    position: absolute;
+    box-sizing: content-box;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid rgb(74, 73, 73);
+    top: calc(calc((var(--pokeball-height) - 10px) / 2) - 15px);
+    left: calc(calc((var(--pokeball-height) - 10px) / 2) - 15px);
+}
+
+.pokeball::after {
+    content: "";
+    position: absolute;
+    top: calc(15px - 11px);
+    left: calc(15px - 11px);
+    background-color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid black;
+    animation: redBlinker 1s ease-in-out infinite;
+}
+
+.pokeball::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 7.5px;
+    left: calc(-1 * var(--pokeball-height) / 2 + 16px);
+    width: calc(var(--pokeball-height) - 2px);
+    height: 15px;
+    background-color: rgb(74, 73, 73);
+}
+
+@keyframes spin {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-240px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes rotate {
+
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hand {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    50% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(30deg);
+    }
+}
+
+@keyframes redBlinker {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: red;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
