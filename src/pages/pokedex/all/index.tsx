@@ -5,46 +5,30 @@ import Loading from "~/components/Loading/Loading";
 import styles from "./all.module.css";
 import CaughtPokemon from "~/components/CaughtButton";
 import usePokemonData from "~/hooks/usePokemonData";
-import type { GetServerSideProps } from "next";
 import { getPokemonId } from "~/helpers/pokemon";
-import { prisma } from "~/server/db";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
-import { getServerAuthSession } from "~/server/auth";
 import { firstWorldCapital } from "~/helpers/firstWordCapital";
-import { api } from "~/utils/api";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
+import useCaughtPokemon from "./useCaughtPokemon";
 
-const pokedexPageVariant = {
+export const pokedexPageVariant = {
   initial: {
     x: 500,
+    y: -500,
+    rotateZ: 5,
     opacity: 0,
   },
   animate: {
     x: 0,
+    y: 0,
+    rotateZ: 0,
     opacity: 1,
   },
 };
 
-function Pokedex({ caughtPokemonIds }: { caughtPokemonIds: number[] }) {
-  const session = useSession();
-
-  const [caughtPokemon, setCaughtPokemon] = useState(caughtPokemonIds);
-
-  const caughtHandler = (id: number) => {
-    if (caughtPokemon.includes(id)) {
-      setCaughtPokemon((prev) => [...prev.filter((el) => el !== id)]);
-      releasePokemon(id);
-    } else {
-      setCaughtPokemon((prev) => [...prev, id]);
-      catchPokemon(id);
-    }
-  };
-  const { mutate: catchPokemon, isLoading: isCatching } =
-    api.pokemon.catch.useMutation();
-  const { mutate: releasePokemon, isLoading: isReleasing } =
-    api.pokemon.release.useMutation();
-
+function Pokedex() {
+  const { caughtPokemon, caughtHandler, isReleasing, isCatching, session } =
+    useCaughtPokemon();
   const [page, setPage] = useState(1);
 
   const { isLoading, pokeData, prevPageUrl, nextPageUrl } =
@@ -121,26 +105,3 @@ function Pokedex({ caughtPokemonIds }: { caughtPokemonIds: number[] }) {
 }
 
 export default Pokedex;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getServerAuthSession(context);
-  if (!session) {
-    return {
-      props: { caughtPokemonIds: [] },
-    };
-  }
-
-  const data = await prisma.caughtPokemon.findMany({
-    where: {
-      userId: session.user.id,
-    },
-    select: {
-      pokemonId: true,
-    },
-  });
-  const caughtPokemonIds = data.map((el) => el.pokemonId);
-
-  return {
-    props: { caughtPokemonIds },
-  };
-};
