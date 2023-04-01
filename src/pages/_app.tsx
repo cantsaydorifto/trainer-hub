@@ -6,32 +6,20 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import Layout from "~/components/layout";
+import { usePageLoading } from "~/hooks/usePageLoading";
+import Loading from "~/components/Loading/Loading";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const router = useRouter();
-  useEffect(() => {
-    const rootElement = document.getElementById("__next");
-    if (rootElement) {
-      if (
-        router.pathname === "/pokedex" ||
-        router.pathname === "/pokedex/start"
-      ) {
-        rootElement.className = "root-2";
-      } else {
-        rootElement.className = "root";
-      }
-    }
-  }, [router.pathname]);
+  const { isPageLoading } = usePageLoading();
+
   return (
     <SessionProvider session={session}>
       <Layout>
-        <Component {...pageProps} />
+        {isPageLoading ? <Loading /> : <Component {...pageProps} />}
       </Layout>
     </SessionProvider>
   );
