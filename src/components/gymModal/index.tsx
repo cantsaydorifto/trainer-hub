@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import { getPokemonId } from "~/helpers/pokemon";
@@ -31,7 +32,7 @@ export default function GymModal({
   setBadge,
   isLoading,
 }: props) {
-  console.log(trainer);
+  const session = useSession();
 
   const { mutate, isLoading: addingBadge } =
     api.pokemon.addBadges.useMutation();
@@ -63,20 +64,26 @@ export default function GymModal({
             <p>{trainer.badge}</p>
           </div>
         </div>
-        {!badge.includes(trainer.id) ? (
-          <button
-            disabled={isLoading || addingBadge}
-            onClick={gymDefeatHandler}
-            className={styles.battle}
-          >
-            Battle
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/934/934427.png"
-              alt="battle"
-            />
-          </button>
-        ) : (
-          <p className={styles.recievedBadge}>You have the {trainer.badge}</p>
+        {!!session.data?.user && (
+          <>
+            {!badge.includes(trainer.id) ? (
+              <button
+                disabled={isLoading || addingBadge}
+                onClick={gymDefeatHandler}
+                className={styles.battle}
+              >
+                Battle
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/934/934427.png"
+                  alt="battle"
+                />
+              </button>
+            ) : (
+              <p className={styles.recievedBadge}>
+                You have the {trainer.badge}
+              </p>
+            )}
+          </>
         )}
       </div>
       <div className={styles.team}>

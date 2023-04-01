@@ -2,18 +2,21 @@ import { useState } from "react";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import GymModal from "~/components/gymModal";
 import styles from "./gym styles/gyms.module.css";
-import { johto, skeletonData } from "./region-data";
+import { johto, skeletonData } from "~/helpers/region-data";
 import { api } from "~/utils/api";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 
 export default function Johto() {
   const [badge, setBadge] = useState<number[]>([]);
+  const session = useSession();
 
   const { isLoading } = api.pokemon.getBadges.useQuery(undefined, {
     onSuccess: (el) => {
       setBadge(el);
     },
     refetchOnWindowFocus: false,
+    enabled: !!session.data?.user,
   });
   const [gymToggle, setGymToggle] = useState<{
     toggle: boolean;

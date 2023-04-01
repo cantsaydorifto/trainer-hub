@@ -2,22 +2,25 @@ import { useState } from "react";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import GymModal from "~/components/gymModal";
 import styles from "./gym styles/gyms.module.css";
-import { johto, sinnoh, skeletonData } from "./region-data";
+import { sinnoh, skeletonData } from "~/helpers/region-data";
 import { api } from "~/utils/api";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 
 export default function Sinnoh() {
   const [badge, setBadge] = useState<number[]>([]);
+  const session = useSession();
 
   const { isLoading } = api.pokemon.getBadges.useQuery(undefined, {
     onSuccess: (el) => {
       setBadge(el);
     },
     refetchOnWindowFocus: false,
+    enabled: !!session.data?.user,
   });
   const [gymToggle, setGymToggle] = useState<{
     toggle: boolean;
-    modalData: typeof johto[0];
+    modalData: typeof sinnoh[0];
   }>({
     toggle: false,
     modalData: sinnoh[0] || skeletonData,
@@ -39,7 +42,7 @@ export default function Sinnoh() {
         animate={{ translateX: "0px", opacity: 1 }}
         className={styles.container}
       >
-        {johto.map((gym) => (
+        {sinnoh.map((gym) => (
           <div
             className={`${checkStyleClass(styles.gymCard)} ${gym.type}`}
             onClick={() => {
