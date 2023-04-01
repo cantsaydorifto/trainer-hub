@@ -86,7 +86,7 @@ export default function Team({
             {edit && (
               <UpdateTeam
                 key={pokemon.pokemonId}
-                addPokemon={pokemon.pokemonId !== 0 ? true : false}
+                addPokemon={pokemon.pokemonId !== 0}
                 onClick={() => editTeamHandler(pokemon.pokemonId, idx)}
               />
             )}
