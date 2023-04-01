@@ -1,0 +1,48 @@
+.team {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px 30px;
+  padding: 10px;
+}
+
+.pokemon {
+  display: flex;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 16px;
+  position: relative;
+  margin: 0 auto;
+  animation: card 0.2s;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes card {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.addPokemonCardColor {
+  background-color: rgb(197, 195, 234);
+}
+
+@media only screen and (max-width: 850px) {
+  .team {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .team {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}

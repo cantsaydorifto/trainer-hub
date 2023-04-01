@@ -6,18 +6,21 @@ import ConditionalWrapper from "./conditionalWrapper";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import { getPokemonId } from "~/helpers/pokemon";
 
-type SearchDataPokemon = {
+type pokeInfo = {
   name: string;
   id: number;
 };
 
 type props = {
-  condition: { isLink: boolean; clickHandler: (() => void) | null };
+  condition: {
+    isLink: boolean;
+    clickHandler: (pokeInfo: pokeInfo) => Promise<void> | null;
+  };
 };
 
 function SearchBar({ condition }: props) {
   const [inputData, setInputData] = useState("");
-  const [filterData, setFilterData] = useState<SearchDataPokemon[]>([]);
+  const [filterData, setFilterData] = useState<pokeInfo[]>([]);
 
   const pokeData = useMemo(
     () =>
