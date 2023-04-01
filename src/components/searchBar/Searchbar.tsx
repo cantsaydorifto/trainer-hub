@@ -14,7 +14,7 @@ type pokeInfo = {
 type props = {
   condition: {
     isLink: boolean;
-    clickHandler: (pokeInfo: pokeInfo) => Promise<void> | null;
+    clickHandler: ((pokeInfo: pokeInfo) => Promise<void>) | null;
   };
 };
 
