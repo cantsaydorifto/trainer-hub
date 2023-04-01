@@ -133,4 +133,33 @@ export const pokemonRouter = createTRPCRouter({
         },
       });
     }),
+
+  getBadges: protectedProcedure.query(async ({ ctx }) => {
+    const badges = await ctx.prisma.trainerBadges.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+      select: {
+        badgeId: true,
+      },
+    });
+    return badges.map((el) => el.badgeId);
+  }),
+
+  addBadges: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.user.update({
+        where: {
+          id: ctx.session.user.id,
+        },
+        data: {
+          trainerBadges: {
+            create: {
+              badgeId: input,
+            },
+          },
+        },
+      });
+    }),
 });
