@@ -37,5 +37,9 @@ export const usePageLoading = () => {
     }
   }, [router.pathname]);
 
-  return { isPageLoading: isPageLoading && router.pathname === "/pokedex/all" };
+  const loaderRoutes = ["/pokedex/all", "/pokedex/start"];
+
+  const loadOnRoutes = loaderRoutes.includes(router.pathname);
+
+  return { isPageLoading: isPageLoading && loadOnRoutes };
 };
