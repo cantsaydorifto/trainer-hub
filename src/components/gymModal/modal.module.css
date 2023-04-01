@@ -1,0 +1,171 @@
+.trainer {
+  width: 70%;
+  height: 100%;
+  color: white;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trainerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.trainerCard div {
+  background-color: rgb(236, 104, 104);
+  border: 2px solid rgb(122, 114, 114);
+  border-radius: 12px;
+  box-sizing: content-box;
+  padding: 2px;
+  text-align: center;
+  height: fit-content;
+  width: 50%;
+  height: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.trainerCard > img {
+  height: 100px;
+  border-radius: 0 0 50% 50%;
+}
+
+.team {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 0;
+  padding: 10px;
+}
+
+.pokemon > img {
+  height: 50px;
+}
+
+.pokemon {
+  display: flex;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 16px;
+  margin: auto;
+  width: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.battle {
+  all: unset;
+  cursor: pointer;
+  height: 30px;
+  background-color: rgb(237, 128, 128);
+  color: black;
+  border: 2px solid whitesmoke;
+  display: flex;
+  gap: 4px;
+  padding: 2px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.battle > img {
+  height: 65%;
+}
+
+.battle:hover {
+  background-color: #8cd383;
+}
+
+.recievedBadge {
+  height: 38px;
+  transition: all 0.3s;
+  animation: badgeComplete 0.3s;
+}
+
+@keyframes badgeComplete {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gymInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.badgeInfo {
+  display: flex;
+  width: 120px;
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+}
+
+.badgeInfo p {
+  text-align: center;
+}
+
+.badgeInfo > div {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badgeInfo img {
+  height: 60px;
+  width: 60px;
+}
+
+.content {
+  align-self: center;
+  margin-top: 0;
+  width: 650px;
+  height: 350px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 680px) {
+  .content {
+    margin-top: 60px;
+    height: fit-content;
+    padding: 50px 15px;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+  }
+  .team {
+    width: fit-content;
+    padding: 20px;
+    gap: 20px 20px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .content {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .gymInfo {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

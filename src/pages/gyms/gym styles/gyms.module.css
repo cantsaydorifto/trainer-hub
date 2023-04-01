@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px 0;
+}
+
+.gymCard {
+  width: 250px;
+  padding: 5px;
+  height: 250px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  border: 3px solid white;
+  border-radius: 12px;
+  transition: all 0.5s;
+}
+
+.trainer {
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.gymCard:hover .trainer {
+  -webkit-filter: drop-shadow(2px 2px 0 white) drop-shadow(2px -2px 0 white)
+    drop-shadow(-2px 2px 0 white) drop-shadow(-2px -2px 0 white);
+  filter: drop-shadow(2px 2px 0 white) drop-shadow(2px -2px 0 white)
+    drop-shadow(-2px 2px 0 white) drop-shadow(-2px -2px 0 white);
+}
+
+@media only screen and (max-width: 900px) {
+  .container {
+    width: fit-content;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 50px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: fit-content;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
