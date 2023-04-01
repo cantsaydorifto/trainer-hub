@@ -10,6 +10,9 @@ import { checkStyleClass } from "~/helpers/checkStyleClass";
 import { firstWorldCapital } from "~/helpers/firstWordCapital";
 import Image from "next/image";
 import useCaughtPokemon from "~/hooks/useCaughtPokemon";
+import { getServerAuthSession } from "~/server/auth";
+import type { GetServerSideProps } from "next";
+import { prisma } from "~/server/db";
 
 export const pokedexPageVariant = {
   initial: {
@@ -26,9 +29,21 @@ export const pokedexPageVariant = {
   },
 };
 
-function Pokedex() {
-  const { caughtPokemon, caughtHandler, isReleasing, isCatching, session } =
+function Pokedex({ caughtPokemonIds }: { caughtPokemonIds: number[] }) {
+  const [caughtPokemon, setCaughtPokemon] = useState(caughtPokemonIds);
+  const { catchPokemon, releasePokemon, isReleasing, isCatching, session } =
     useCaughtPokemon();
+
+  const caughtHandler = (id: number) => {
+    if (caughtPokemon.includes(id)) {
+      setCaughtPokemon((prev) => [...prev.filter((el) => el !== id)]);
+      releasePokemon(id);
+    } else {
+      setCaughtPokemon((prev) => [...prev, id]);
+      catchPokemon(id);
+    }
+  };
+
   const [page, setPage] = useState(1);
 
   const { isLoading, pokeData, prevPageUrl, nextPageUrl } =
@@ -105,3 +120,44 @@ function Pokedex() {
 }
 
 export default Pokedex;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerAuthSession(context);
+  if (!session) {
+    return {
+      props: { caughtPokemonIds: [] },
+    };
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: session.user.id,
+    },
+    select: {
+      username: true,
+    },
+  });
+
+  if (!user?.username) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  const data = await prisma.caughtPokemon.findMany({
+    where: {
+      userId: session.user.id,
+    },
+    select: {
+      pokemonId: true,
+    },
+  });
+  const caughtPokemonIds = data.map((el) => el.pokemonId);
+
+  return {
+    props: { caughtPokemonIds },
+  };
+};
