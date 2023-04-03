@@ -1,0 +1,200 @@
+.container {
+  margin: 20px auto 70px auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 20px;
+}
+
+.userCard {
+  display: flex;
+  gap: 10px;
+}
+
+.userInfoContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.userStats {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.caughtPokemon {
+  background-color: rgb(115, 210, 132);
+  color: white;
+  height: 120px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 16px;
+}
+
+.badges {
+  background-color: rgb(203, 77, 231);
+}
+
+.level {
+  background-color: rgb(237, 118, 155);
+}
+
+.caughtPokemon p {
+  font-size: 1.3rem;
+}
+
+.caughtPokemon span {
+  font-size: 2.5rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  color: white;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 16px;
+  padding: 2px;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgb(135, 135, 240);
+}
+
+.userInfo p {
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.avatar {
+  height: 300px;
+  width: 200px;
+}
+
+.avatar img {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.badgesContainer {
+  display: grid;
+  height: 230px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 10px;
+}
+
+.badge {
+  width: 50px;
+  height: 50px;
+}
+
+.badgesCard {
+  display: flex;
+  width: 270px;
+  height: 370px;
+  background-color: rgb(230, 178, 133);
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  border: 2px solid white;
+  border-radius: 16px;
+}
+
+.badge img {
+  height: 100%;
+  width: 100%;
+}
+
+.teamCard {
+  display: flex;
+  padding: 20px 0;
+  position: relative;
+  background-color: rgb(165, 133, 230);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 2px solid white;
+  border-radius: 16px;
+}
+
+.teamCard > p {
+  font-size: 2rem;
+}
+
+.teamCard > a {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(246, 204, 105);
+  border: 1px solid white;
+  border-radius: 16px;
+  padding: 0 5px;
+}
+
+.teamCardStyles {
+  height: 120px;
+  width: 120px;
+}
+
+.teamCardImageStyles {
+  height: 100px;
+}
+
+@media only screen and (max-width: 850px) {
+  .teamCard .teamMediaQueries {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .userInfo {
+    width: 170px;
+  }
+  .userCard {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .badgesCard {
+    width: 300px;
+  }
+  .container {
+    gap: 30px;
+  }
+  .teamCard {
+    padding: 20px 0 40px 0;
+  }
+  .teamCard .teamMediaQueries {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .caughtPokemon {
+    width: 100px;
+  }
+  .caughtPokemon p {
+    font-size: 1.3rem;
+  }
+  .caughtPokemon span {
+    font-size: 1.5rem;
+  }
+  .badgesCard {
+    width: 280px;
+  }
+}
