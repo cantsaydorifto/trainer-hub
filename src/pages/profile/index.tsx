@@ -27,6 +27,7 @@ type UserInfo = {
   caughtPokemon: number[];
   trainerBadges: number[];
   level: number;
+  badgeCount: number;
   team: team[];
 };
 
@@ -36,6 +37,7 @@ const emptyUserObject: UserInfo = {
   caughtPokemon: [],
   trainerBadges: [],
   level: 0,
+  badgeCount: 0,
   team: [],
 };
 
@@ -50,7 +52,11 @@ export default function Profile() {
         void router.push("/setup");
         return;
       }
-      setUserInfo({ ...data });
+      setUserInfo({
+        ...data,
+        trainerBadges: data.trainerBadges.slice(0, 9),
+        badgeCount: data.trainerBadges.length,
+      });
     },
     refetchOnWindowFocus: false,
     enabled: !!session.data?.user,
@@ -98,7 +104,7 @@ export default function Profile() {
             >
               <p>Badges</p>
               <p>
-                <span>{userInfo.trainerBadges.length}</span>/20
+                <span>{userInfo.badgeCount}</span>/20
               </p>
             </div>
           </div>

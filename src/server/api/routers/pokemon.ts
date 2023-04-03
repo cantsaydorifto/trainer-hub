@@ -238,7 +238,7 @@ export const pokemonRouter = createTRPCRouter({
     const username = user.username || "NO_USERNAME_YET";
     const avatar = user.avatar || 0;
     const userPokemon = user.caughtPokemon.map((el) => el.pokemonId);
-    const userBadges = user.trainerBadges.map((el) => el.badgeId).splice(0, 9);
+    const userBadges = user.trainerBadges.map((el) => el.badgeId);
     const level =
       Math.floor(user.caughtPokemon.length / 2) + user.trainerBadges.length;
     const team = [...user.team];
