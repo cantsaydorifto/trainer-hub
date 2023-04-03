@@ -1,0 +1,233 @@
+.container {
+  width: 100%;
+  position: relative;
+  max-width: 800px;
+  min-width: 280px;
+  min-height: 520px;
+  justify-content: center;
+  margin: 50px auto;
+  background-color: rgb(128, 139, 151);
+  display: flex;
+  gap: 20px;
+  border-radius: 12px;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.oakContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.oak {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.dialogueText {
+  width: 50%;
+  height: 100%;
+  font-size: 1.2rem;
+  height: fit-content;
+  width: 450px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 5px solid rgb(133, 210, 219);
+  position: relative;
+  animation: pulse 0.6s infinite;
+  border-radius: 12px;
+}
+
+.imgContainer {
+  width: 200px;
+  height: 300px;
+}
+
+.imgContainer img {
+  height: 280px;
+  display: block;
+  margin: auto;
+}
+
+.dialogue {
+  display: flex;
+  min-height: 180px;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.usernameContainer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usernameContainer > button {
+  /* border: 5px solid rgb(133, 210, 219); */
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 16px;
+  padding: 0 10px;
+  background-color: rgb(167, 237, 167);
+}
+
+.oakContainer > button {
+  position: absolute;
+  top: calc(50% - 20px);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.oakContainer > button:hover {
+  box-shadow: none;
+  transform: scale(1.05);
+  background-color: transparent;
+}
+
+.starterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.starterContainer img {
+  width: 150px;
+  height: 150px;
+}
+
+.starter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarChangeButtonContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.avatarChangeButtonContainer > span {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.avatarChangeButtonContainer > button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 10px;
+  color: white;
+}
+
+.avatarChangeButtonContainer > button:hover {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.avatarChangeButtonContainer > button::before {
+  border-color: rgb(59, 49, 49);
+}
+
+.avatarChangeButtonContainer > button::before {
+  border-width: 0 2px 2px 0;
+  top: calc(50% - 11px);
+}
+
+.avatarContainer img {
+  height: 300px;
+}
+
+.avatarImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 350px;
+  animation: avatar 0.3s forwards;
+}
+
+.username {
+  background-color: transparent;
+  width: 210px;
+  height: 35px;
+  padding: 5px 10px;
+  font-size: 1.4rem;
+  color: white;
+  border: 2px solid white;
+  border-radius: 12px;
+}
+
+.username:focus {
+  outline: none;
+}
+
+@keyframes avatar {
+  0% {
+    transform: translateX(50px);
+    scale: 1.05;
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .dialogueText {
+    font-size: 1rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .starterContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+}
