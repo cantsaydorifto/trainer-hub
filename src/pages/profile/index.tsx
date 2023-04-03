@@ -61,10 +61,16 @@ export default function Profile() {
     refetchOnWindowFocus: false,
     enabled: !!session.data?.user,
   });
+  console.log(session.status);
 
-  if (!session.data?.user) return <h1>You&apos;re not logged in</h1>;
+  if (session.status === "unauthenticated")
+    return <h1>You&apos;re not logged in</h1>;
 
-  if (isLoading || userInfo.username === "Loading...") {
+  if (
+    session.status === "loading" ||
+    isLoading ||
+    userInfo.username === "Loading..."
+  ) {
     return <Loading />;
   }
 

@@ -2,6 +2,7 @@ import { useSession } from "next-auth/react";
 import Team from "~/components/team/Team";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import styles from "./team.module.css";
+import Loading from "~/components/Loading/Loading";
 
 type team = {
   name: string;
@@ -11,7 +12,11 @@ type team = {
 
 export default function TeamPage() {
   const session = useSession();
-  if (!session.data?.user) return <h1>You&apos;re not logged in</h1>;
+  if (session.status === "loading") {
+    return <Loading />;
+  }
+  if (session.status === "unauthenticated")
+    return <h1>You&apos;re not logged in</h1>;
   const team: team[] = [];
   for (let i = 0; i < 6; i++)
     team.push({
