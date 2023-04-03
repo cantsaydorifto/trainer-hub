@@ -19,11 +19,13 @@ export default function Team({
   edit,
   teamCardStyles,
   teamCardImageStyles,
+  teamMediaQueries,
 }: {
   team: team[];
   edit: boolean;
   teamCardStyles: string;
   teamCardImageStyles: string;
+  teamMediaQueries?: string;
 }) {
   const session = useSession();
 
@@ -34,6 +36,7 @@ export default function Team({
     onSuccess: (el) => {
       setTeamData(el);
     },
+    refetchOnWindowFocus: false,
     enabled: !!session.data?.user,
   });
 
@@ -73,7 +76,11 @@ export default function Team({
   };
   return (
     <>
-      <div className={styles.team}>
+      <div
+        className={`${checkStyleClass(styles.team)} ${checkStyleClass(
+          teamMediaQueries
+        )}`}
+      >
         {teamData.map((pokemon, idx) => (
           <div
             className={`${checkStyleClass(styles.pokemon)} ${teamCardStyles} ${
@@ -90,7 +97,7 @@ export default function Team({
                 onClick={() => editTeamHandler(pokemon.pokemonId, idx)}
               />
             )}
-            {pokemon.pokemonId && (
+            {!!pokemon.pokemonId && (
               <img
                 className={teamCardImageStyles}
                 src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${getPokemonId(
