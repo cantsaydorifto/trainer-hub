@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { checkStyleClass } from "~/helpers/checkStyleClass";
 import styles from "./navbar.module.css";
+import { signIn, useSession } from "next-auth/react";
 
 const roboto = Roboto({
   weight: ["300"],
@@ -12,7 +13,7 @@ const roboto = Roboto({
 const navLinks = [
   {
     name: "Home",
-    path: "/dashboard",
+    path: "/",
   },
   {
     name: "Team",
@@ -27,6 +28,36 @@ const navLinks = [
     path: "/gyms",
   },
 ];
+
+const UserImage = () => {
+  const session = useSession();
+  if (session.status === "unauthenticated") {
+    return (
+      <button onClick={() => signIn()} className={styles.login}>
+        Log In
+      </button>
+    );
+  }
+  if (session.status === "loading") return null;
+  if (session.status === "authenticated") {
+    if (!session.data.user.image || session.data.user.image.trim() === "") {
+      return (
+        <Link href="/profile">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3899/3899618.png"
+            alt=""
+          />
+        </Link>
+      );
+    }
+    return (
+      <Link href="/profile">
+        <img src={`${session.data.user.image}`} alt="" />
+      </Link>
+    );
+  }
+  return null;
+};
 
 export default function Navbar() {
   const router = useRouter();
@@ -54,10 +85,7 @@ export default function Navbar() {
         </ul>
       </nav>
       <div className={styles.userImage}>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/287/287226.png"
-          alt=""
-        />
+        <UserImage />
       </div>
     </div>
   );

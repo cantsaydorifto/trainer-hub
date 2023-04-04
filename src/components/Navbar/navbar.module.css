@@ -1,91 +1,108 @@
 .navbar {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    height: 50px;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background-color: #1f1e1e;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #1f1e1e;
+  display: flex;
+  justify-content: space-between;
 }
 
 .userImage {
-    width: 20%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.userImage>img {
-    height: 40px;
-    /* margin-right: 10px; */
+.userImage > a {
+  margin-right: 30px;
+}
+
+.userImage a > img {
+  display: block;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
 }
 
 .logo {
-    display: flex;
-    height: 50px;
-    width: 20%;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  height: 50px;
+  width: 20%;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo>img {
-    height: 40px;
+.logo > img {
+  height: 40px;
 }
 
-.logo>h1 {
-    font-size: 1rem;
-    margin: 0;
+.logo > h1 {
+  font-size: 1rem;
+  margin: 0;
 }
 
 .navbar nav {
-    width: 60%;
+  width: 60%;
 }
 
 .navbar ul {
-    display: flex;
-    justify-content: center;
-    font-size: 1.2rem;
-    gap: 50px;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    list-style: none;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  gap: 50px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+  padding: 0;
 }
 
 .navbar a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .navbar li {
-    position: relative;
-    /* overflow-x: hidden; */
+  position: relative;
+}
+
+.userImage > button {
+  margin-right: 30px;
+  cursor: pointer;
+  height: 35px;
+  width: 80px;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
 }
 
 .selectedLink:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #f2f2f2;
-    bottom: -5px;
-    left: 0;
-    animation: selectedLink 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #f2f2f2;
+  bottom: -5px;
+  left: 0;
+  animation: selectedLink 0.2s ease-in-out;
 }
 
 @keyframes selectedLink {
-    0% {
-        /* transform: translateX(-100%); */
-        scale: 0;
-    }
+  0% {
+    /* transform: translateX(-100%); */
+    scale: 0;
+  }
 
-    100% {
-        /* transform: translateX(0); */
-        scale: 1;
-    }
+  100% {
+    /* transform: translateX(0); */
+    scale: 1;
+  }
 }
