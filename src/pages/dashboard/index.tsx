@@ -50,7 +50,7 @@ export default function Dashboard() {
     >
       <div className={styles.dashboardInfo}>
         <div className={styles.trainerInfo}>
-          <h2>Hello Trainer</h2>
+          <h2>Greetings, Trainer!</h2>
           <p>
             Welcome to the world of Pokémon! Your goal is to become the greatest
             trainer by exploring regions, catching Pokémon, and battling Gym
