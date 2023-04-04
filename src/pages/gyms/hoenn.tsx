@@ -16,9 +16,9 @@ export default function Hoenn() {
       setBadge(el);
     },
     refetchOnWindowFocus: false,
-    enabled: !!session.data?.user,
+    enabled: !!(session.status === "authenticated"),
   });
-  console.log(isLoading);
+
   const [gymToggle, setGymToggle] = useState<{
     toggle: boolean;
     modalData: typeof hoenn[0];

@@ -16,7 +16,7 @@ export default function Sinnoh() {
       setBadge(el);
     },
     refetchOnWindowFocus: false,
-    enabled: !!session.data?.user,
+    enabled: !!(session.status === "authenticated"),
   });
   const [gymToggle, setGymToggle] = useState<{
     toggle: boolean;
