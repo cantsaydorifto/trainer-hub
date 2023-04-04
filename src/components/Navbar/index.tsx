@@ -75,9 +75,7 @@ export default function Navbar() {
           {navLinks.map((el) => (
             <li
               key={el.path}
-              className={
-                router.pathname.startsWith(el.path) ? styles.selectedLink : ""
-              }
+              className={router.pathname === el.path ? styles.selectedLink : ""}
             >
               <Link href={el.path}>{el.name}</Link>
             </li>
