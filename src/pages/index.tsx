@@ -1,3 +1,4 @@
+import { signOut, useSession } from "next-auth/react";
 import styles from "./dashboard.module.css";
 import { motion } from "framer-motion";
 import { Roboto } from "next/font/google";
@@ -10,6 +11,7 @@ const roboto = Roboto({
 });
 
 export default function Dashboard() {
+  const session = useSession();
   const links = [
     {
       link: "Team",
@@ -42,6 +44,12 @@ export default function Dashboard() {
       linkInfo: "View the forum and post your own threads",
     },
   ];
+  const signOutButton = {
+    link: "Sign Out",
+    color: "fireCardColor",
+    img: "https://cdn-icons-png.flaticon.com/512/3558/3558823.png",
+    linkInfo: "Sign out of your account",
+  };
   return (
     <motion.div
       className={`${checkStyleClass(styles.container)} ${roboto.className}`}
@@ -79,6 +87,21 @@ export default function Dashboard() {
             </div>
           </Link>
         ))}
+        {session.status === "authenticated" && (
+          <button
+            className={`${checkStyleClass(styles.linkBox)} ${
+              signOutButton.color
+            } ${roboto.className}`}
+            onClick={() => signOut()}
+            style={{ cursor: "pointer" }}
+          >
+            <img src={signOutButton.img} />
+            <div className={styles.linkInfo}>
+              <h2>{signOutButton.link}</h2>
+              <p>{signOutButton.linkInfo}</p>
+            </div>
+          </button>
+        )}
       </div>
     </motion.div>
   );
