@@ -110,7 +110,7 @@ export default function Setup() {
     "Welcome to the world of Pokémon!, My name is Oak! People call me the Pokémon Prof!",
     "This world is inhabited by creatures called Pokémon! For some people, Pokémon are pets. Others use them for fights. Myself... I study Pokémon as a profession.",
     "First, what is your name?",
-    `Right! So your name is ${checkStyleClass(name.current?.value)}`,
+    `Right! So your name is ${username}`,
     `There are 3 types of Pokémon: Grass, Fire, and Water. Each type has strengths and weaknesses. For example, Grass is weak against Fire, and Fire is weak against Water`,
     `Choose your starter Pokémon!`,
     `So you chose ${checkStyleClass(starterData[starter]?.name)}!`,
