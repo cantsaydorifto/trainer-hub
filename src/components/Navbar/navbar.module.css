@@ -106,3 +106,30 @@
     scale: 1;
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    justify-content: flex-start;
+    margin-left: 10px;
+  }
+  .userImage > button,
+  .userImage > a {
+    margin: 0 0;
+  }
+  .userImage {
+    margin-right: 10px;
+    /* width: fit-content; */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar nav {
+    display: none;
+  }
+  .userImage {
+    width: 200px;
+  }
+  .logo {
+    width: 200px;
+  }
+}
