@@ -154,10 +154,7 @@ export default function Setup() {
                   layout
                   className={styles.imgContainer}
                 >
-                  <img
-                    src="https://archives.bulbagarden.net/media/upload/thumb/3/3e/Lets_Go_Pikachu_Eevee_Professor_Oak.png/270px-Lets_Go_Pikachu_Eevee_Professor_Oak.png"
-                    alt="Professor Oak"
-                  />
+                  <img src="/assets/oak.png" alt="Professor Oak" />
                 </motion.div>
               )}
               {step === 5 && (
