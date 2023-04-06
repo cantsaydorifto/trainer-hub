@@ -42,7 +42,7 @@ export default function Setup() {
   api.pokemon.getUserInfo.useQuery(undefined, {
     onSuccess: (data) => {
       if (data.username !== "NO_USERNAME_YET") {
-        void router.push("/dashboard");
+        void router.push("/");
       } else {
         setShowPage(true);
       }
@@ -77,7 +77,7 @@ export default function Setup() {
       { username, avatar, starter: starterId },
       {
         onSuccess: () => {
-          void router.push("/dashboard");
+          void router.push("/profile");
         },
         onError: () => {
           alert("Something went wrong, try again");
