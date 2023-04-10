@@ -48,6 +48,27 @@ model User {
     caughtPokemon CaughtPokemon[]
     trainerBadges TrainerBadges[]
     team          Team[]
+    posts         Post[]
+    likedPosts    Likes[]
+}
+
+model Post {
+    id       String   @id @default(cuid())
+    content  String   @db.VarChar(255)
+    author   User     @relation(fields: [authorId], references: [id])
+    authorId String
+    date     DateTime @default(now())
+    likedBy  Likes[]
+}
+
+model Likes {
+    id     String @id @default(cuid())
+    User   User   @relation(fields: [userId], references: [id])
+    userId String
+    Post   Post   @relation(fields: [postId], references: [id])
+    postId String
+
+    @@unique([userId, postId])
 }
 
 model CaughtPokemon {
