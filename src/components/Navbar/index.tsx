@@ -29,7 +29,7 @@ const navLinks = [
   },
 ];
 
-const UserImage = () => {
+export const UserImage = () => {
   const session = useSession();
   if (session.status === "unauthenticated") {
     return (

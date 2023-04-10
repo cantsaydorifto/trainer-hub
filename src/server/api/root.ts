@@ -1,5 +1,6 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { pokemonRouter } from "./routers/pokemon";
+import { postRouter } from "./routers/posts";
 
 /**
  * This is the primary router for your server.
@@ -8,6 +9,7 @@ import { pokemonRouter } from "./routers/pokemon";
  */
 export const appRouter = createTRPCRouter({
   pokemon: pokemonRouter,
+  posts: postRouter,
 });
 
 // export type definition of API

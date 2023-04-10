@@ -1,0 +1,142 @@
+.container {
+  width: 95%;
+  max-width: 800px;
+  border: 1px solid rgb(102, 102, 102);
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.container h1 {
+  margin-bottom: 10px;
+}
+
+.postBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
+  border-top: 1px solid rgb(102, 102, 102);
+  border-bottom: 1px solid rgb(102, 102, 102);
+}
+
+.postBox > div:nth-child(1) {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.postBox > div:nth-child(2) {
+  margin-left: 80px;
+  display: flex;
+  gap: 12px;
+}
+
+.postBox > div:nth-child(2) > button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.postBox > div:nth-child(2) > button > img {
+  height: 30px;
+  width: 30px;
+}
+
+.postBox > div:nth-child(2) > span:nth-child(2) {
+  color: grey;
+  line-height: 30px;
+}
+
+.postBox > div:nth-child(2) > span:nth-child(3) {
+  color: rgb(236, 146, 146);
+  line-height: 30px;
+}
+
+.postBox > div:nth-child(1) img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.createPost {
+  display: flex;
+  flex-direction: column;
+}
+
+.createPost > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.createPost > div:nth-child(2) > button {
+  width: 80px;
+  height: 30px;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: rgb(174, 118, 224);
+  color: white;
+  border: none;
+  transition: opacity 0.5s;
+}
+
+.createPost textarea {
+  background: transparent;
+  width: 90%;
+  height: 50px;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.postContent {
+  margin-top: 10px;
+  color: rgb(189, 189, 189);
+  font-size: 1rem;
+}
+
+.userPost {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.userPost > div {
+  display: flex;
+  gap: 10px;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.userPost > div > span:nth-child(2),
+.userPost > div > span:nth-child(3) {
+  color: grey;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  margin: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.page > button {
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: grey;
+  border-radius: 16px;
+  color: white;
+}
+
+.page > span {
+  color: white;
+  font-size: 2rem;
+}
